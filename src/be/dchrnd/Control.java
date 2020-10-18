@@ -49,7 +49,11 @@ public class Control
                 cnt++;
             }
         }
-        board.print();//TODO debug
+    }
+
+    public static void debug()
+    {
+        board.print();
     }
 
     public static int random(int min, int max)

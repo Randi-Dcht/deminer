@@ -3,6 +3,7 @@ package be.dchrnd;
 import be.dchrnd.Graphics.CaseG;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -46,6 +47,11 @@ public class PlayGame extends Application
         primaryStage.show();
 
         grid.setOnMouseClicked(e->calculusClick(e.getX(),e.getY()));
+        pane.setOnKeyPressed(keyEvent ->
+        {
+            if (keyEvent.getCode() == KeyCode.DOWN)
+                Control.debug();
+        });
         timer = new Timer();timer.schedule(task,1000,1000);
     }
 
