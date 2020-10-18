@@ -3,7 +3,7 @@ package be.dchrnd.Enum;
 public enum Types
 {
     Normal("normal","bomb.png"),
-    Prof("Mens","x.png");
+    Prof("Prof","x.png");
 
     private String name;
     private String img;
