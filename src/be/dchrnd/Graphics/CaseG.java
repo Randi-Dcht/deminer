@@ -29,7 +29,7 @@ public class CaseG
         if (cases.isOccupied())
         {
             pane.getChildren().remove(rectangle);
-            FileInputStream stream = new FileInputStream("");//TODO
+            FileInputStream stream = new FileInputStream(Control.PATH);
             Image ig = new Image(stream);
             ImageView img = new ImageView();
             img.setImage(ig);
