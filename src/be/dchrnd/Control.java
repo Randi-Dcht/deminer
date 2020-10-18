@@ -18,6 +18,7 @@ public class Control
     public static int SPACEX = 3;//space
     public static int SPACEY = 3;//space
     public static int size;//board
+    public static String PATH = "/media/dchtrnd_tour/DchtRnd_Data/Informatique/Demineur/src/ressource/bomb.png";
     /**
      * The board of the game (Logic)
      */
