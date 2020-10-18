@@ -33,11 +33,19 @@ public class PlayGame extends Application
         int x_ =(int)(x/(Control.WIDTH+Control.SPACEX));
         int y_ =(int)(y/(Control.HEIGHT+Control.SPACEY));
 
-        try {
-            board[x_][y_].click();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (isIn(x_,y_))
+        {
+            try {
+                board[x_][y_].click();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
+    }
+
+    private boolean isIn(int x, int y)
+    {
+        return x>=0 && x< Control.size && y >= 0 && y < Control.size;
     }
 
 
