@@ -29,7 +29,6 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
         BorderPane root = new BorderPane();
-
         primaryStage.setTitle("Main_Deminer");
         primaryStage.setScene(new Scene(root, 500, 500));
 
@@ -66,7 +65,7 @@ public class Main extends Application
                         FileChooser chooseF = new FileChooser();
                         File file =  chooseF.showOpenDialog(stage);
                         if (file != null && isPicture(file.getName()))
-                            System.out.println(file.getPath());//TODO
+                            Control.PATH = file.getPath();
                         else
                             vb.getChildren().addAll(auto,user);
                     }
