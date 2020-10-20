@@ -2,18 +2,24 @@ package be.dchrnd;
 
 import be.dchrnd.Enum.Level;
 import be.dchrnd.Enum.Sizes;
-import be.dchrnd.Enum.Types;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.io.File;
+
+
 
 public class Main extends Application
 {
@@ -46,6 +52,27 @@ public class Main extends Application
         primaryStage.show();
         this.stage = primaryStage;
 
+        groupR.selectedToggleProperty().addListener(new ChangeListener<Toggle>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1)
+            {
+                RadioButton select = (RadioButton) groupR.getSelectedToggle();
+                if (select != null)
+                {
+                    if (!select.getText().equals("Image normal"))
+                    {
+                        vb.getChildren().removeAll(auto,user);
+                        FileChooser chooseF = new FileChooser();
+                        File file =  chooseF.showOpenDialog(stage);
+                        if (file != null && isPicture(file.getName()))
+                            System.out.println(file.getPath());//TODO
+                        else
+                            vb.getChildren().addAll(auto,user);
+                    }
+                }
+            }
+        });
 
         start.setOnAction(e->
         {
@@ -59,6 +86,17 @@ public class Main extends Application
                 stage.close();
             }
         });
+    }
+
+    private boolean isPicture(String pathName)
+    {
+        String[] list = pathName.split("\\.");
+        if (list.length >= 2)
+        {
+            String ext = list[list.length-1];
+            return ext.equalsIgnoreCase("png") || ext.equalsIgnoreCase("jpeg") || ext.equalsIgnoreCase("gif") || ext.equalsIgnoreCase("jpg");
+        }
+        return false;
     }
 
 
