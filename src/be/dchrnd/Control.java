@@ -27,8 +27,8 @@ public class Control
      * Size between two nodes
      * Size of the board
      */
-    public int size;//board
-    public String PATH = "src/ressource/bomb.png";//TODO
+    private int size;//board
+    private String PATH = "src/ressource/bomb.png";//TODO
     private Board board;
 
     private static Random rd = new Random();

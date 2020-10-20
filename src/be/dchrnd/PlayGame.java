@@ -50,7 +50,7 @@ public class PlayGame extends Application
         pane.setOnKeyPressed(keyEvent ->
         {
             if (keyEvent.getCode() == KeyCode.DOWN)
-                Control.debug();
+                Control.getInstance().debug();
         });
         timer = new Timer();timer.schedule(task,1000,1000);
     }
@@ -72,17 +72,17 @@ public class PlayGame extends Application
 
     private boolean isIn(int x, int y)
     {
-        return x>=0 && x< Control.size && y >= 0 && y < Control.size;
+        return x>=0 && x< Control.getInstance().getNumberCases() && y >= 0 && y < Control.getInstance().getNumberCases();
     }
 
 
     private void initBoard()
     {
-        board = new CaseG[Control.size][Control.size];
-        for (int i=0; i < Control.size; i++)
+        board = new CaseG[Control.getInstance().getNumberCases()][Control.getInstance().getNumberCases()];
+        for (int i=0; i < Control.getInstance().getNumberCases(); i++)
         {
-            for (int j=0; j < Control.size; j++)
-                board[j][i] = new CaseG(Control.getCase(j,i));
+            for (int j=0; j < Control.getInstance().getNumberCases(); j++)
+                board[j][i] = new CaseG(Control.getInstance().getCase(j,i));
         }
     }
 
@@ -90,9 +90,9 @@ public class PlayGame extends Application
     {
         grid.setHgap(Control.SPACEX);
         grid.setVgap(Control.SPACEY);
-        for (int i=0; i < Control.size; i++)
+        for (int i=0; i < Control.getInstance().getNumberCases(); i++)
         {
-            for (int j=0; j < Control.size; j++)
+            for (int j=0; j < Control.getInstance().getNumberCases(); j++)
                 grid.add(board[j][i].draw(),j,i);
         }
     }

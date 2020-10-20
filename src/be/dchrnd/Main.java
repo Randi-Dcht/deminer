@@ -65,7 +65,7 @@ public class Main extends Application
                         FileChooser chooseF = new FileChooser();
                         File file =  chooseF.showOpenDialog(stage);
                         if (file != null && isPicture(file.getName()))
-                            Control.PATH = file.getPath();
+                            Control.getInstance().setPath(file.getPath());
                         else
                             vb.getChildren().addAll(auto,user);
                     }
@@ -79,8 +79,8 @@ public class Main extends Application
             Level lv = listLevel.getValue();
             if (sz != null && lv != null)
             {
-                Control.initLogicBoard(sz.getSize(),sz.getSizeCase());
-                Control.placeBomb(lv.getMax());//TODO
+                Control.getInstance().initLogicBoard(sz.getSize(),sz.getSizeCase());
+                Control.getInstance().placeBomb(lv.getMax());//TODO
                 new PlayGame().start(new Stage());
                 stage.close();
             }
