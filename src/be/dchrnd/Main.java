@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -30,9 +32,12 @@ public class Main extends Application
         root.setTop(title);
 
         ChoiceBox<Sizes> listSize = new ChoiceBox<Sizes>(FXCollections.observableArrayList(Sizes.values()));
-        ChoiceBox<Types> listType = new ChoiceBox<Types>(FXCollections.observableArrayList(Types.values()));
         ChoiceBox<Level> listLevel = new ChoiceBox<Level>(FXCollections.observableArrayList(Level.values()));
-        VBox vb = new VBox();vb.setSpacing(10);vb.getChildren().addAll(listSize,listLevel,listType);
+        ToggleGroup groupR = new ToggleGroup();
+        RadioButton auto = new RadioButton("Image normal");
+        RadioButton user = new RadioButton("Image de mon prof préféré.");
+        auto.setToggleGroup(groupR);user.setToggleGroup(groupR);
+        VBox vb = new VBox();vb.setSpacing(10);vb.getChildren().addAll(listSize,listLevel,auto,user);
         root.setCenter(vb);
 
         Button start = new Button("START");

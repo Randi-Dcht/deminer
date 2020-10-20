@@ -18,7 +18,7 @@ public class Control
     public static int SPACEX = 3;//space
     public static int SPACEY = 3;//space
     public static int size;//board
-    public static String PATH = "";
+    public static String PATH = "src/ressource/bomb.png";//TODO
     /**
      * The board of the game (Logic)
      */
