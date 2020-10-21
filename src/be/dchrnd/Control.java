@@ -2,6 +2,9 @@ package be.dchrnd;
 
 import be.dchrnd.Objects.Board;
 import be.dchrnd.Objects.Cases;
+import be.dchrnd.Objects.Tuples;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -85,6 +88,18 @@ public class Control
             return n;
         else
             return random(min,max);
+    }
+
+    private ArrayList<Tuples> getCasesClick(Tuples position, int number)
+    {
+        ArrayList<Tuples> list = new ArrayList<>();
+        int cnt = 0;
+        while (cnt < number)
+        {
+            //TODO
+            cnt++;
+        }
+        return list;
     }
 
     public Cases getCase(int x, int y)

@@ -2,9 +2,9 @@ package be.dchrnd.Enum;
 
 public enum Level
 {
-    hard(20),
+    hard(  20),
     medium(15),
-    easy(10);
+    easy(  10);
 
     private int max;
 
