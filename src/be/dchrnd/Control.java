@@ -90,6 +90,15 @@ public class Control
             return random(min,max);
     }
 
+    public ArrayList<Tuples> isClick(Tuples position)//TODO
+    {
+        if(board.getCase(position.x, position.y).isOccupied())
+            return null;
+        ArrayList<Tuples> lst = new ArrayList<>();
+        lst.add(new Tuples(position.x, position.y));
+        return lst;
+    }
+
     private ArrayList<Tuples> getCasesClick(Tuples position, int number)
     {
         ArrayList<Tuples> list = new ArrayList<>();

@@ -1,6 +1,7 @@
 package be.dchrnd;
 
 import be.dchrnd.Graphics.CaseG;
+import be.dchrnd.Objects.Tuples;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -10,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,6 +22,7 @@ public class PlayGame extends Application
     private Text time;
     private Text score;
     private Timer timer;
+    private Stage stage;
 
     private int sec = 0;
     private int min = 0;
@@ -45,6 +48,8 @@ public class PlayGame extends Application
         primaryStage.setScene(scene);
         primaryStage.setTitle("Play to deminer");
         primaryStage.show();
+        stage = primaryStage;
+
 
         grid.setOnMouseClicked(e->calculusClick(e.getX(),e.getY()));
         pane.setOnKeyPressed(keyEvent ->
@@ -61,11 +66,26 @@ public class PlayGame extends Application
         int y_ =(int)(y/(Control.HEIGHT+Control.SPACEY));
 
         if (isIn(x_,y_))
+            analyzedClick(Control.getInstance().isClick(new Tuples(x_,y_)));
+
+    }
+
+    private void analyzedClick(ArrayList<Tuples> list)
+    {
+        if (list == null)
         {
-            try {
-                board[x_][y_].click();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            timer.purge();timer.cancel();
+            try{
+                new Main().start(new Stage());
+                stage.close();
+            } catch (Exception e){e.printStackTrace();}
+        }
+        else
+        {
+            for (Tuples tpl : list)
+            {
+                try{board[tpl.x][tpl.y].click();}
+                catch (FileNotFoundException e){e.printStackTrace();}
             }
         }
     }
